@@ -20,6 +20,10 @@ property2 = Property.new({
     })
 
 property1.save()
+property1.save()
+
+property2.save()
+property2.save()
 property2.save()
 
 property1.value = "800 £"

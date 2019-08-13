@@ -87,4 +87,15 @@ class Property
     return Property.new(search_result)
   end
 
+  def Property.filter_number_of_bedrooms(number_of_bedrooms)
+    db = PG.connect({ dbname: 'properties', host: 'localhost'})
+    sql = "SELECT * FROM property WHERE number_of_bedrooms = $1"
+    values = [number_of_bedrooms]
+    db.prepare("find", sql)
+    search_result = db.exec_prepared("find",values)
+    db.close()
+    return search_result.map { |result| Property.new(result) }
+    # return Property.new(search_result)
+  end
+
 end
